@@ -29,8 +29,8 @@ jobs:
       - name: commit and push files
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git diff-index --quiet HEAD || (git commit -a -m "Created new weather map" --allow-empty)
-          git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/en-programmerare/weathermaps.git
+          git remote set-url origin https://git:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git push origin main
