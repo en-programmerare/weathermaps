@@ -30,8 +30,9 @@ def main():
         url = get_midnight_map_url(now, i)
         try:
             pdf.image(url, x = 51.9, y = 14.8, h = 169.7)
+            print(f"Successfully added map number {i}.")
         except Exception as exc:
-            print(f"Couldn't download map number {i}. Skipping it.\n\n{exc}")
+            print(f"Couldn't download map number {i}. Skipping it. {exc}")
         
     # Satellitbilden
     pdf.add_page()
@@ -39,8 +40,9 @@ def main():
     try:
         with pdf.rotation(angle=4, x = 53.7, y = 39.3):
             pdf.image(url, x = 53.7, y = 39.3, w = 158.9, h = 123.1)
+            print("Successfully added satellite image.")
     except Exception as exc:
-        print(f"Couldn't download the satellite image. Skipping it.\n\n{exc}")
+        print(f"Couldn't download the satellite image. Skipping it. {exc}")
     
     # Länk till Gervitunglamyndir
     satellite_url = get_interactive_satellite_url(yesterday)
@@ -53,6 +55,7 @@ def main():
     pdf.set_producer("pyFPDF2")
     pdf.set_author(f"Mathias. Wetter3. Veðurstofa Íslands.")
     pdf.output(file_name)
+    print(f"File saved as {file_name}.")
 
 
 # URL till Wetter3-karta för angiven dag och typ.
