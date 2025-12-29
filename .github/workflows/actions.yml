@@ -3,6 +3,7 @@ name: create weather maps
 on:
   schedule:
     - cron: '0 2 * JAN,AUG-DEC *' # 03:00 (tider anges i UTC) varje dag i augusti-december samt januari. 
+  workflow_dispatch:
 
 jobs:
   build:
