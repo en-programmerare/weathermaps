@@ -19,7 +19,7 @@ def main():
     now = datetime.now()
     yesterday = now - timedelta(days=1)
     
-    file_name = f"{FILE_NAME_PREFIX}{format_date(now)}.pdf"
+    file_name = f"maps/{FILE_NAME_PREFIX}{format_date(now)}.pdf"
     
     pdf = FPDF(orientation = "landscape", unit="mm", format="A4") 
     pdf.set_font("helvetica", size=20)
