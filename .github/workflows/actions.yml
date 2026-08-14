@@ -2,7 +2,7 @@ name: create weather maps
 
 on:
   schedule:
-    - cron: '0 2 * JAN,AUG-DEC *' # 03:00 (tider anges i UTC) varje dag i augusti-december samt januari. 
+    - cron: '0 2 * JAN,OCT-DEC *' # 03:00 (tider anges i UTC) varje dag i augusti-december samt januari. 
   workflow_dispatch:
 
 jobs:
@@ -29,7 +29,7 @@ jobs:
       - name: commit and push files
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           git diff-index --quiet HEAD || (git commit -a -m "Created new weather map" --allow-empty)
           git remote set-url origin https://git:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
